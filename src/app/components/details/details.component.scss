@@ -1,0 +1,71 @@
+.user-form {
+    background-color: #1f1f1f; /* Dark background as in the image */
+    color: #ffffff; /* Light text color for contrast */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    width: 800px; /* Adjust as needed */
+    margin-right: 5% ;
+    margin-left: 5% ;
+    margin-top: 100px !important /* Center the form */
+  }
+  
+  .form-group {
+    width: 65%;
+    margin-bottom: 15px; /* Spacing between form groups */
+  }
+  
+  label {
+    display: block; /* Make labels stack on top of inputs */
+    margin-bottom: 5px;
+    color: #a0a0a0; /* Slightly lighter color for labels */
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="date"],
+  select {
+    width: calc(100% - 12px); /* Full width with padding accounted for */
+    padding: 8px;
+    border: 1px solid #444; /* Darker border color */
+    background-color: #333; /* Slightly lighter background for inputs */
+    color: #eee; /* Light text color for inputs */
+    border-radius: 4px;
+  }
+  
+  select {
+    appearance: none; /* Remove default select arrow */
+    -webkit-appearance: none; /* For WebKit browsers */
+    -moz-appearance: none; /* For Firefox */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23a0a0a0' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24h-24z' fill='none'/></svg>"); /* Add custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 30px; /* Adjust padding to accommodate arrow */
+  }
+  
+  button {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px; /* Space between buttons */
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .cancel-button {
+    background-color: #6c757d; /* Gray cancel button */
+  }
+  
+  .cancel-button:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+  }
+  
+  /* Style the datepicker if needed - example for WebKit */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(60%); /* Adjust the color of the datepicker icon */
+  }

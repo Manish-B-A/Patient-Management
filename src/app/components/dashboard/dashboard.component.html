@@ -1,0 +1,11 @@
+<p-card [style]="{'margin':'50px','height':'300px'}">
+    <ng-template #title>
+<h2>Hello {{currentUser?.name}},</h2>    </ng-template>
+<h3>Quote of the Day</h3>    
+<div class="m-0">
+        {{quote?.quote}} 
+        <div style="display:block ;margin-top:10px; right:10%!important;position:absolute;color:#49a662">
+        -by {{quote?.author}}
+        </div>
+    </div>
+</p-card>

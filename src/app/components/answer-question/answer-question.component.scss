@@ -1,0 +1,23 @@
+.form-group {
+    width: 65%;
+    margin-bottom: 15px; /* Spacing between form groups */
+  }
+  
+  label {
+    display: block; /* Make labels stack on top of inputs */
+    margin-bottom: 5px;
+    color: #a0a0a0; /* Slightly lighter color for labels */
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  select {
+    width: calc(100% - 12px); /* Full width with padding accounted for */
+    padding: 8px;
+    border: 1px solid #444; /* Darker border color */
+    background-color: #333; /* Slightly lighter background for inputs */
+    color: #eee; /* Light text color for inputs */
+    border-radius: 4px;
+  }

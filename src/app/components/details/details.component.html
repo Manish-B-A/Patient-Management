@@ -1,0 +1,104 @@
+@if(!patientName && role!=='patient'){
+    <span style="left:30%;position:absolute;font-size:30px;top:50%">Please select {{role === 'doctor' ? 'patient':'user'}} to view details.</span>
+    }
+@if(role ==='doctor'){
+<div style="right:5%;position:absolute;margin-top:2%">
+    <p-floatlabel variant="on">
+        <p-select [options]="loginService.patients" optionLabel="name" [(ngModel)]="patientName"
+            [style]="{minWidth:'175px','border-radius': '3rem',fontSize: '25px' }"
+            (onChange)="onPatientSelect($event)" /> <label for="on_label" style="font-size: 18px ;padding: 2px;">Patient
+            Name*</label>
+    </p-floatlabel>
+</div>
+}
+@if(role ==='admin'){
+<div style="right:5%;position:absolute;margin-top:2%">
+    <p-floatlabel variant="on">
+        <p-select [options]="loginService.userData" optionLabel="name" [(ngModel)]="patientName"
+            [style]="{minWidth:'175px','border-radius': '3rem',fontSize: '25px' }"
+            (onChange)="onPatientSelect($event)" /> <label for="on_label" style="font-size: 18px ;padding: 2px;">User
+            Name*</label>
+    </p-floatlabel>
+</div>
+}
+@if(patientName?.type === 'patient' || role === 'patient'){
+    <form [formGroup]="form" class="user-form">
+        <div class="form-group">
+            <label for="name" class="font-semibold w-30">Name</label>
+            <input pInputText id="username" [readonly]="!editForm" formControlName="name" type="text"
+                autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label for="dob" class="font-semibold w-24">Date of Birth</label>
+            <p-datepicker formControlName="dob" [disabled]="!editForm" [iconDisplay]="'input'" [showIcon]="true"
+                inputId="icondisplay" />
+        </div>
+        <div class="form-group">
+            <label for="gender" class="font-semibold w-24">Gender</label>
+            <p-select [options]="genders" optionLabel="name" [readonly]="!editForm" formControlName="gender"
+                placeholder="Select gender" class="w-full md:w-56" />
+        </div>
+        <div class="form-group">
+            <label for="address" class="font-semibold w-24">Address</label>
+            <input type="text" pInputText id="address" formControlName="address" [readonly]="!editForm"
+                class="flex-auto" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label for="state" class="font-semibold w-24">State</label>
+            <p-select [options]="states" optionLabel="name" formControlName="state" [readonly]="!editForm"
+                placeholder="Select a State" class="w-full md:w-56" />
+        </div>
+        <div class="form-group">
+            <label for="country" class="font-semibold w-24">Country</label>
+            <p-select [options]="countries" optionLabel="name" formControlName="country" [readonly]="!editForm"
+                (onChange)="onCountrySelect($event.value.code)" placeholder="Select a Country" class="w-full md:w-56" />
+        </div>
+        <div class="form-group">
+            <label for="phone" class="font-semibold w-24">Phone</label>
+            <input type="text" pInputText id="phone" formControlName="phone" class="flex-auto" [readonly]="!editForm"
+                autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label for="email" class="font-semibold w-24">Email</label>
+            <input type="text" pInputText id="email" formControlName="email" class="flex-auto" [readonly]="!editForm"
+                autocomplete="off" />
+        </div>
+
+        @if(role === 'patient'){
+        <div class="form-group">
+            <label for="password" class="font-semibold">Password</label>
+            <input type="password" pInputText id="password" formControlName="password" [style]="{'width':'300px'}"
+                [readonly]="!editForm" autocomplete="off" />
+        </div>
+        }
+    <div>
+        <p-button label="Cancel" [outlined]="true" severity="secondary" (click)="onCancel()" />
+        <p-button label="Save" [disabled]="!this.form?.valid || !this.form?.dirty || !this.form?.touched"
+            [style]="{'margin':'5px'}" (click)="onSave()" />
+    </div>
+</form>
+
+        }
+
+        @if(patientName?.type === 'doctor'){
+            <form [formGroup]="form" class="user-form">
+                <div class="form-group">
+                    <label for="name" class="font-semibold w-30">Name</label>
+                    <input pInputText id="username" [readonly]="!editForm" formControlName="name" type="text"
+                        autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label for="email" class="font-semibold w-24">Email</label>
+                    <input type="text" pInputText id="email" formControlName="email" class="flex-auto" [readonly]="!editForm"
+                        autocomplete="off" />
+                </div>
+
+            <div>
+                <p-button label="Cancel" [outlined]="true" severity="secondary" (click)="onCancel()" />
+                <p-button label="Save" [disabled]="!this.form?.valid || !this.form?.dirty || !this.form?.touched"
+                    [style]="{'margin':'5px'}" (click)="onSave()" />
+            </div>
+        </form>
+        }
+
+<p-toast />

@@ -1,0 +1,13 @@
+<p-tabs value="{{routeHistory}}">
+    <p-tablist>
+        @for(tab of tabs; track tab){
+          <p-tab [value]="tab" [routerLink]="tab" (click)="onRouteChange()"><span>{{tab | translate}}</span></p-tab>
+        }
+        <div class="nav_buttons">
+        @if(role === 'admin'){
+          <p-button icon="pi pi-plus" label="New User" (click)="onNewUserClick()" class="add_patient"/>}
+        <p-button icon="pi pi-user" label="Logout" (click)="onLogout()" />
+      </div>
+    </p-tablist>
+</p-tabs>
+<app-register-user-modal [visible]="visible" (save)="onSaveRegisterDialog($event)" (cancel)="onCancelRegisterDialog()"></app-register-user-modal>

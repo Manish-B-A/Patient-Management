@@ -1,0 +1,31 @@
+<div>
+        <div style="display:inline-flex ;">
+            <p-button icon="pi pi-plus" [style]="{'margin':'20px',height:'50px',left:'10px'}" label="New Question" (click)="onNewQuestionClick()"></p-button>
+            <div style="right:5%;position:absolute;margin:10px">
+                <p-floatlabel variant="on">
+                    <p-select [options]="role === 'patient'? loginService?.doctors : loginService?.patients" optionLabel="name" [(ngModel)]="userName"
+                        [style]="{minWidth:'175px',fontSize: '25px','right':'2%' }" [showClear]="true" ><ng-template #dropdownicon>
+                            <i class="pi pi-filter"></i>
+                        </ng-template></p-select> <label
+                        for="on_label" style="font-size: 18px ;padding: 2px;">Filter</label>
+                </p-floatlabel>
+            </div>
+            <app-new-question-modal (save)="onSaveQuestion($event)" [visible]="showQuestionModal" (cancel)="onCancelQuestion()"></app-new-question-modal>
+        </div>
+        <div style="margin: 5%;">
+    <p-accordion [value]="0" >
+    @for(question of filterQuestions(); track question; let i = $index;){
+    <p-accordion-panel [value]="i">
+        <p-accordion-header [style]="{fontSize:'30px'}">{{question?.question}}</p-accordion-header>
+        <p-accordion-content>
+            {{question?.answer}}
+            <p-button icon="pi pi-pencil" [outlined]="true" [style]="{'margin':'10px'}" label="Edit" (click)="answerQuestion(question)"></p-button>
+        </p-accordion-content>
+    </p-accordion-panel>
+    }
+</p-accordion>
+</div>
+</div>
+
+
+<app-answer-question [visible]="showEditQuestionModal" [inputQuestion]="questionInEdit" (save)="onEditQuestionSave()" (cancel)="onEditQuestionCancel()"></app-answer-question>

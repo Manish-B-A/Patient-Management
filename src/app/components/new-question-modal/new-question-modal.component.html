@@ -1,0 +1,26 @@
+<p-dialog header="New Question" [modal]="true" [(visible)]="visible" [style]="{ width: '40rem'}" (onHide)="onCancel()">
+    <form [formGroup]="form" class="user-form">
+        @if(role === 'doctor'){<div class="form-group">
+            <label
+                            for="on_label" style="font-size: 18px ;padding: 2px;">Patient Name*</label>
+            <p-select [options]="patients" optionLabel="name" formControlName="patientName"
+                            [style]="{minWidth:'175px',fontSize: '25px' }" /> 
+        </div>
+    }
+    @if(role === 'patient'){
+        <div class="form-group">
+            <label
+                            for="on_label" style="font-size: 18px ;padding: 2px;">Doctor Name*</label>
+            <p-select [options]="doctors" optionLabel="name"  formControlName="doctorName"
+                            [style]="{minWidth:'175px',fontSize: '25px' }" /> 
+        </div>
+    }
+        <div class="form-group">
+            <label for="question" class="font-semibold w-30">Question*</label>
+            <textarea pInputText id="question" rows="4" formControlName="question" type="text" autocomplete="off" ></textarea>
+        </div>
+        <div class="form-group">
+            <p-button [style]="{left:'500px'}" (click)="onSave()" [disabled]="!this.form?.valid">Save</p-button>
+        </div>
+    </form>
+</p-dialog>

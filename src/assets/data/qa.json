@@ -1,0 +1,32 @@
+{
+    "qa": [
+        {
+            "question": "is there any particular diet to be followed",
+            "answer": "",
+            "doctorId": "1",
+            "patientId": "1",
+            "date":"12/13/2025"
+        },
+        {
+            "question": "is there any particular diet to be followed",
+            "answer": "",
+            "doctorId": "1",
+            "patientId": "2",
+            "date":"12/13/2025"
+        },
+        {
+            "question": "is there any particular diet to be followed",
+            "answer": "",
+            "doctorId": "2",
+            "patientId": "1",
+            "date":"12/13/2025"
+        },
+        {
+            "question": "is there any particular diet to be followed",
+            "answer": "",
+            "doctorId": "1",
+            "patientId": "2",
+            "date":"12/13/2025"
+        }
+    ]
+}

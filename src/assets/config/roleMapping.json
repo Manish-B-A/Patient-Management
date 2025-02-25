@@ -1,0 +1,7 @@
+{
+    "roles":{
+        "doctor":{"tabs":["dashboard","userDetails","prescription","qa"]},
+        "patient":{"tabs":["dashboard","userDetails","prescription","qa"]},
+        "admin":{"tabs":["dashboard","userDetails"]}
+    }
+}

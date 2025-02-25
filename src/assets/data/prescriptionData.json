@@ -1,0 +1,31 @@
+{
+    "drugs": [
+        {
+            "name": "Paracetamol","value":"paracetamol"
+        },
+        {
+            "name": "Painkiller","value":"painkiller"
+        },
+        {
+            "name": "Antacid","value":"antacid"
+        }
+    ],
+    "schedule": [
+        {
+            "time": "1-0-0", "value":"100"
+        },
+        {
+            "time": "0-1-0", "value":"010"
+        },
+        {
+            "time": "0-0-1", "value":"001"
+        },
+        {
+            "time": "1-0-1", "value":"101"
+        },
+        {
+            "time": "1-1-1", "value":"111"
+        }
+    ],
+    "time":[{"time":"AF","value":"af"},{"time":"BF","value":"bf"}]
+}

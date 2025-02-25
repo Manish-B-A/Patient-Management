@@ -1,0 +1,62 @@
+<p-dialog header="Add User" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem',minHeight:'20rem'}" (onHide)="onCancel()">
+    <div class="form-group">
+        <label for="User Type" class="font-semibold w-24">User Type</label>
+        <p-select [options]="userTypes" optionLabel="type" [(ngModel)]="newUserType" (onChange)="onUserTypeSelection()" placeholder="Select type" class="w-full md:w-56" />
+    </div>
+    @if(newUserType?.code === 'patient'){
+    <form [formGroup]="form" class="user-form">
+        <div class="form-group">
+            <label for="name" class="font-semibold w-30">Name</label>
+            <input pInputText id="username" formControlName="name" type="text" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label for="dob" class="font-semibold w-24">Date of Birth</label>
+            <p-datepicker formControlName="dob" [iconDisplay]="'input'"[showIcon]="true" inputId="icondisplay" />
+        </div>
+        <div class="form-group">
+            <label for="gender" class="font-semibold w-24">Gender</label>
+            <p-select [options]="genders" optionLabel="name" formControlName="gender" placeholder="Select gender" class="w-full md:w-56" />
+        </div>
+        <div class="form-group">
+            <label for="address" class="font-semibold w-24">Address</label>
+            <input type="text" pInputText id="address" formControlName="address" class="flex-auto" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label for="country" class="font-semibold w-24">Country</label>
+            <p-select [options]="countries" optionLabel="name" formControlName="country" (onChange)="onCountrySelect($event.value.code)" placeholder="Select a Country" class="w-full md:w-56" />
+        </div>
+        <div class="form-group">
+            <label for="state" class="font-semibold w-24">State</label>
+            <p-select [options]="states" optionLabel="name" formControlName="state" placeholder="Select a State" class="w-full md:w-56" />
+        </div>
+        
+        <div class="form-group">
+            <label for="phoneNumber" class="font-semibold w-24">Phone</label>
+            <input type="text" pInputText id="phoneNumber" formControlName="phoneNumber" class="flex-auto" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label for="email" class="font-semibold w-24">Email</label>
+            <input type="text" pInputText id="email" formControlName="email" class="flex-auto" autocomplete="off" />
+        </div>
+    </form>
+}
+
+@if(newUserType?.code === 'doctor'){
+    <form [formGroup]="form" class="user-form">
+        <div class="form-group">
+            <label for="name" class="font-semibold w-30">Name</label>
+            <input pInputText id="username" formControlName="name" type="text" autocomplete="off" />
+        </div>
+        <div class="form-group">
+            <label for="email" class="font-semibold w-24">Email</label>
+            <input type="text" pInputText id="email" formControlName="email" class="flex-auto" autocomplete="off" />
+        </div>
+    </form>
+
+    }
+    <ng-template #footer>
+        <p-button label="Cancel" [outlined]="true" severity="secondary" (click)="onCancel()" />
+        <p-button label="Save" [disabled]="!form?.valid"  (click)="onSave()" />
+    </ng-template>
+
+</p-dialog>

@@ -1,0 +1,51 @@
+{
+    "route": "",
+    "countries": [
+        {
+            "name": "INDIA",
+            "code": "in",
+            "states": [
+                {
+                    "name": "Karnataka",
+                    "code": "kr"
+                },
+                {
+                    "name": "Delhi",
+                    "code": "dl"
+                },
+                {
+                    "name": "Assam",
+                    "code": "as"
+                }
+            ]
+        },
+        {
+            "name": "USA",
+            "code": "usa",
+            "states": [
+                {
+                    "name": "Texas",
+                    "code": "tx"
+                },
+                {
+                    "name": "New York",
+                    "code": "ny"
+                }
+            ]
+        },
+        {
+            "name": "JAPAN",
+            "code": "jp",
+            "states": [
+                {
+                    "name": "Osaka",
+                    "code": "os"
+                },
+                {
+                    "name": "Kyoto",
+                    "code": "ky"
+                }
+            ]
+        }
+    ]
+}

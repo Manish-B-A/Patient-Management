@@ -1,0 +1,21 @@
+<div style="width:100%;height:100%;position:absolute;background-image: url('../assets/images/login.jpeg');">
+<div style="position: absolute;top:30vh;left:35vw;">
+<!-- <input type="image" src="../assets/images/login.jpeg" /> -->
+    <p-card [style]="{ width: '35rem', height:'20rem', overflow: 'hidden' }">
+        <ng-template #header>
+            <span style="position:fixed; font-size: 40px; padding:10px; margin-left: 225px; margin-top:20px">Login</span>
+        </ng-template>
+    <div style="display:grid ;">
+        <input type="text" placeholder="Username" pInputText [(ngModel)]="username" style="margin-top:90px;"/>
+        <input type="text" placeholder="Password" pInputText [(ngModel)]="password" style="margin-top:20px;" />
+    </div>
+    @if(loginService.invalidUser){
+        <span>Your username or password is incorrect. Please try again.</span>
+    }
+
+    <ng-template #footer>
+            <p-button label="Login" (click)="onLogin()" [style]="{width: '100%', margin: '10px !important', alignContents: 'center', marginTop:'30px' }"/>
+    </ng-template>
+</p-card>
+</div>
+</div>

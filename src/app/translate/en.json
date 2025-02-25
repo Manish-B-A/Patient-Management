@@ -1,0 +1,17 @@
+{
+    "qa": "Q&A",
+    "userDetails": "User Details",
+    "prescription": "Prescription",
+    "dashboard": "Dashboard",
+    "af": "AF",
+    "bf": "BF",
+    "100": "1-0-0",
+    "010": "0-1-0",
+    "001": "0-0-1",
+    "101": "1-0-1",
+    "111": "1-1-1",
+    "paracetamol":"Paracetamol",
+    "painkiller":"Painkiller",
+    "antacid":"Antacid"
+    
+}

@@ -1,0 +1,13 @@
+<p-dialog header="Update" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem'}" (onHide)="onCancel()">
+    <form [formGroup]="form">
+    <div class="form-group">
+        <label for="question" class="font-semibold w-30">Question</label>
+        <textarea pInputText id="question" rows="4" style="font-size: 20px;width:90%" formControlName="question" type="text" autocomplete="off" ></textarea>
+    </div>
+    <div class="form-group">
+        <label for="answer" class="font-semibold w-30">Answer</label>
+        <textarea pInputText id="answer" rows="4" style="font-size: 20px;width:90%" formControlName="answer" type="text" autocomplete="off" ></textarea>
+    </div>
+</form>
+<p-button (click)="onSave()" [disabled]="!this.form?.valid || this.form?.pristine || !this.form?.touched" [style]="{'width':'100px'}">Save</p-button>
+</p-dialog>

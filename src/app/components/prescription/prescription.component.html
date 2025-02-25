@@ -1,0 +1,120 @@
+<div style="margin: 50px; position:relative;">
+    @if(role === 'doctor'){
+    <p-panel [style]="{minHeight:'500px'}">
+        <ng-template #header>
+            <div style="display:grid;">
+                <p-toolbar
+                    [style]="{ 'border-radius': '3rem','padding': '1rem 1rem 1rem 1.5rem', 'margin':'5%','width':'135px'}">
+
+                    <ng-template #start>
+                        <p-button icon="pi pi-plus" (click)="newModeClicked()" class="mr-2" text severity="secondary" />
+                        <p-button icon="pi pi-eye" (click)="viewModeClicked()" class="mr-2" text severity="secondary" />
+                    </ng-template>
+                </p-toolbar>
+                <div style="right:5%;position:absolute;margin-top:2%">
+                    <p-floatlabel variant="on">
+                        <p-select [options]="patients" optionLabel="name" [(ngModel)]="patientName"
+                            [style]="{minWidth:'175px','border-radius': '3rem',fontSize: '25px' }" /> <label
+                            for="on_label" style="font-size: 18px ;padding: 2px;">Patient Name*</label>
+                    </p-floatlabel>
+                </div>
+            </div>
+
+        </ng-template>
+
+        @if(state === 'new'){
+        <div>
+            @for(drug of drugs; track drug){
+            <div>
+                <p>
+                    <p-tag [value]="drug.name" [style]="{fontSize:'20px'}" />
+                </p>
+                <p-select [options]="schedule" [id]="drug.value+'_'+ 'schedule'" optionLabel="time"
+                    (onChange)="scheduleChange(drug.value,$event.value.value)" placeholder="Schedule" />
+                <p-select [options]="time" optionLabel="time" placeholder="AF/BF" [id]="drug.value +'_'+ 'time'"
+                    [style]="{marginLeft:'10px'}" (onChange)="timeChange(drug.value,$event.value.value)"
+                    class="w-full md:w-56" />
+            </div>
+
+            }
+
+        </div>
+
+        <ng-template #footer>
+            <p-button label="Save" [style]="{width:'300px',right:'5%',position:'absolute'}"
+                [disabled]="saveDisableState" (click)="onSave()" />
+        </ng-template>
+        }
+        @if(state === 'view'){
+        @if(!patientName){
+        <span style="left:30%;position:absolute;font-size:30px;top:50%">Please Select Patient to View</span>
+        }
+        @if(patientName && !prescriptions[patientName?.id]){
+        <span style="left:30%;position:absolute;font-size:30px;top:50%">No Prescription Record</span>
+        }
+        <p-accordion [value]="0">
+            @for(item of prescriptions[patientName?.id]; track item;let i =$index;){
+            <p-accordion-panel [value]="i">
+                <p-accordion-header>{{item.date}}</p-accordion-header>
+                <p-accordion-content>
+                    <table>
+                        <tr id="row">
+                            <th >Name</th>
+                            <th id='row'>Schedule</th>
+                            <th class="row">Time</th>
+                        </tr>
+                        @for(drug of getKeys(item.data);track drug){
+                        <tr>
+                            <th>{{drug | translate}}</th>
+                            <th>{{item.data[drug].schedule | translate}}</th>
+                            <th>{{item.data[drug].time | translate}}</th>
+                        </tr>
+                        }
+                    </table>
+                </p-accordion-content>
+            </p-accordion-panel>
+            }
+        </p-accordion>
+        }
+
+    </p-panel>
+
+    }
+    @if(role === 'patient'){
+    <p-panel [style]="{minHeight:'500px'}">
+        
+        @if(!prescriptions[currentUser?.id]){
+        <span style="left:30%;position:absolute;font-size:30px;top:50%">No Prescription Record</span>
+        }
+        <p-accordion [value]="0">
+            @for(item of prescriptions[currentUser?.id]; track item;let i =$index;){
+            <p-accordion-panel [value]="i">
+                <p-accordion-header [style]="{'alignSelf': 'start','alignItems': 'baseline'}"><span style="font-size: 30px;margin-right: 10px ;">{{getDoctorName(item.doctorId)}}</span> on   <span style="font-size: 30px;margin-left: 10px ;">{{item.date}}</span>
+                    <!-- <ng-template #toggleicon>
+                    </ng-template>  -->
+                </p-accordion-header>
+                <p-accordion-content>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Schedule</th>
+                            <th>Time</th>
+                        </tr>
+                        @for(drug of getKeys(item.data);track drug){
+                        <tr>
+                            <th>{{drug | translate}}</th>
+                            <th>{{item.data[drug].schedule | translate}}</th>
+                            <th>{{item.data[drug].time | translate}}</th>
+                        </tr>
+                        }
+                    </table>
+<!-- @if(doctors.length){
+                    <div>Prescribed by {{getDoctorName(item?.doctorId)}}</div>} -->
+                </p-accordion-content>
+            </p-accordion-panel>
+            }
+        </p-accordion>
+
+    </p-panel>
+    }
+</div>
